@@ -37,7 +37,7 @@
 
         <p>I'm not very good at shell script and I would like to learn it. Rather than have it sitting on my computer so it would be nice to get some input from the community. The example on this page would be just from my experience. I'll try to keep every command as a one liner.</p>
 
-        <h3>head command</h3>
+        <h3><strong>head</strong> command</h3>
 
         <h4>Problem 1</h4>
         <p>You can easily cut down your csv file if it's just too big. This will get the first 1000 lines from your csv and save to a new one</p>
@@ -49,32 +49,37 @@
 
         <h4>Problem 2</h4>
         <p>You have splited csv files and would like to conbim them to just one big file. For example, you have something like this
-        <code>
-          csv1.csv
-          ID,NAME
-          1,name1
-          2,name2
+        <pre>
+          <code>
+            csv1.csv
+            ID,NAME
+            1,name1
+            2,name2
 
-          csv2.csv
-          ID,NAME
-          3,name3
-          4,name4
+            csv2.csv
+            ID,NAME
+            3,name3
+            4,name4
 
-          And you want this
+            And you want this
 
-          finished.csv
-          ID,NAME
-          1,name1
-          2,name2
-          3,name3
-          4,name4
-        </code>
-
+            finished.csv
+            ID,NAME
+            1,name1
+            2,name2
+            3,name3
+            4,name4
+          </code>
+        </pre>
         <h4>Solution</h4>
         <code>
           find . -name "*.csv" -exec tail -n +2 {} \;  > conjoined.csv &amp;&amp; head -1 csv1.csv | cat - conjoined.csv > finished.csv
         </code>
 
+
+        <!-- <h3><strong>awk</strong> command</h3>
+        <h4>Problem 1</h4>
+        <p>You are working in git and would like to copy all modified file to another directory for backup. -->
       </section>
     </div>
 
