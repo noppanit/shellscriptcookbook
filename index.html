@@ -21,10 +21,10 @@
           <h1 id="project_title">Shell script cookbook</h1>
           <h2 id="project_tagline">My shell script cookbook.</h2>
 
-            <section id="downloads">
+           <!--  <section id="downloads">
               <a class="zip_download_link" href="https://github.com/noppanit/shellscriptcookbook/zipball/master">Download this project as a .zip file</a>
               <a class="tar_download_link" href="https://github.com/noppanit/shellscriptcookbook/tarball/master">Download this project as a tar.gz file</a>
-            </section>
+            </section> -->
         </header>
     </div>
 
@@ -35,15 +35,45 @@
           <a name="welcome-to-my-shell-script-cookbook" class="anchor" href="#welcome-to-my-shell-script-cookbook"><span class="octicon octicon-link"></span></a>Welcome to my shell script cookbook.
         </h3>
 
-        <p>I'm not very good at shell script and I would like to learn it. Rather than have it sitting on my computer so it would be nice to get some input from the community</p>
+        <p>I'm not very good at shell script and I would like to learn it. Rather than have it sitting on my computer so it would be nice to get some input from the community. The example on this page would be just from my experience. I'll try to keep every command as a one liner.</p>
 
         <h3>head command</h3>
 
-        <p>You can easily cut down your csv file if it's just too big.</p>
+        <h4>Problem 1</h4>
+        <p>You can easily cut down your csv file if it's just too big. This will get the first 1000 lines from your csv and save to a new one</p>
 
-        <pre><code>
+        <h4>Solution</h4>
+        <code>
         $ head -n 1000 your_file.csv > your_new_file.csv
-        </code></pre>
+        </code>
+
+        <h4>Problem 2</h4>
+        <p>You have splited csv files and would like to conbim them to just one big file. For example, you have something like this
+        <code>
+          csv1.csv
+          ID,NAME
+          1,name1
+          2,name2
+
+          csv2.csv
+          ID,NAME
+          3,name3
+          4,name4
+
+          And you want this
+
+          finished.csv
+          ID,NAME
+          1,name1
+          2,name2
+          3,name3
+          4,name4
+        </code>
+
+        <h4>Solution</h4>
+        <code>
+          find . -name "*.csv" -exec tail -n +2 {} \;  > conjoined.csv &amp;&amp; head -1 csv1.csv | cat - conjoined.csv > finished.csv
+        </code>
 
       </section>
     </div>
