@@ -37,7 +37,7 @@
 
         <p>I'm not very good at shell script and I would like to learn it. Rather than have it sitting on my computer so it would be nice to get some input from the community. The example on this page would be just from my experience. I'll try to keep every command as a one liner.</p>
 
-        <h3><strong>head</strong> command</h3>
+        <h3>1. <strong>head</strong> command</h3>
 
         <h4>Problem 1</h4>
         <p>You can easily cut down your csv file if it's just too big. This will get the first 1000 lines from your csv and save to a new one</p>
@@ -46,6 +46,9 @@
         <code>
         $ head -n 1000 your_file.csv > your_new_file.csv
         </code>
+
+        <h4>Explain</h4>
+        <p>This command is simple, head command will print the first 1000 lines and write output to <code>your_new_file.csv</code></p>
 
         <hr />
 
@@ -95,17 +98,17 @@
 
         <hr />
 
-        <h3><strong>awk</strong> command</h3>
+        <h3>2. <strong>awk</strong> command</h3>
         <h4>Problem 1</h4>
         <p>
           You are working in git and would like to copy all modified files to another directory for backup. For example, you run <code>git status -sb</code> and you get something like this.
 
-          <pre>
-            <code>
-              ## gh-pages
-              M index.html
-            </code>
-          </pre>
+          
+          <code>
+            ## gh-pages
+            M index.html
+          </code>
+        
 
         </p>
 
