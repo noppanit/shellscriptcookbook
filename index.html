@@ -47,6 +47,8 @@
         $ head -n 1000 your_file.csv > your_new_file.csv
         </code>
 
+        <hr />
+
         <h4>Problem 2</h4>
         <p>You have splited csv files and would like to conbim them to just one big file. For example, you have something like this
         <pre>
@@ -61,8 +63,10 @@
             3,name3
             4,name4
 
-            And you want this
+          </code>
 
+          <p>And you want this</p>
+          <code>
             finished.csv
             ID,NAME
             1,name1
@@ -76,10 +80,44 @@
           find . -name "*.csv" -exec tail -n +2 {} \;  > conjoined.csv &amp;&amp; head -1 csv1.csv | cat - conjoined.csv > finished.csv
         </code>
 
+        <h4>Explain</h4>
+        <p>
+          <ol>
+            <li>
+              The command can be divided into two parts, the first one is 
+                <code>find . -name "*.csv" -exec tail -n +2 {} \;  > conjoined.csv</code> which is to find all the csv files and stack them up but skip the first line which is the column names line.
+            </li>
+            <li>
+              The second part is <code>head -1 csv1.csv | cat - conjoined.csv > finished.csv</code> which is to get the columns and append that to form the finished csv.
+            </li>
+          </ol>
+        </p>
 
-        <!-- <h3><strong>awk</strong> command</h3>
+        <hr />
+
+        <h3><strong>awk</strong> command</h3>
         <h4>Problem 1</h4>
-        <p>You are working in git and would like to copy all modified file to another directory for backup. -->
+        <p>
+          You are working in git and would like to copy all modified files to another directory for backup. For example, you run <code>git status -sb</code> and you get something like this.
+
+          <pre>
+            <code>
+              ## gh-pages
+              M index.html
+            </code>
+          </pre>
+
+        </p>
+
+        <h4>Solution</h4>
+        <p>
+          <code>
+            cp $(git status -sb | awk 'NR==2 {print $2}') ~/backup_folder
+          </code>
+        </p>
+
+        <h4>Explain</h4>
+        <p>The main command is <code>awk</code> which will scan each line and get the second column which is filename. Then, <code>$(git status -sb | awk 'NR==2 {print $2}')</code> acts like a sub-command to <code>cp</code> which all the files will be copied to <code>~/backup_folder</code> </p>
       </section>
     </div>
 
