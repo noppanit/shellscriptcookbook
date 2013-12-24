@@ -52,7 +52,9 @@
 
         <hr />
 
-        <h4>Problem 2</h4>
+        <h3>2. <strong>find</strong> command </h3>
+
+        <h4>Problem 1</h4>
         <p>You have splited csv files and would like to conbim them to just one big file. For example, you have something like this
         <pre>
           <code>
@@ -99,18 +101,29 @@
 
         <hr />
 
-        <h3>2. <strong>awk</strong> command</h3>
+        <h4>Problem 2</h4>
+        <p>You have some folders or some files you want to delete but not all of them, and you don't want to use Finder or any thing closed to that to do it. Put it simply, you are geeky. We will solve this problem with two simple commands <code>find</code> and <code>xargs</code></p>
+
+        <h4>Solution</h4>
+        <code>find . -maxdepth 1 -type d ! \( -name "folder11" -o -name "folder2" \) | xargs rm -rf</code>
+
+        <h4>Explain</h4>
+        <p>This command is simple, <code>find . -maxdepth 1 -type d ! \( -name "folder11" -o -name "folder2" \)</code> will find folder (-type d) in your current directory with <code>maxdepth</code> 1 to prevent recursiveness. This bit; <code>! \( -name "folder11" -o -name "folder2" \)</code> is like an expression. It means not equal to folder name <code>"folder1"</code> and <code>"folder2"</code></p>
+
+        <p>
+          Then the result is passed to <code>xargs</code> which will act like a pipe to pass the result to command <code>rm</code>
+        </p>
+
+        <h3>3. <strong>awk</strong> command</h3>
         <h4>Problem 1</h4>
         <p>
           You are working in git and would like to copy all modified files to another directory for backup. For example, you run <code>git status -sb</code> and you get something like this.
 
-          
           <code>
             ## gh-pages
             M index.html
           </code>
         
-
         </p>
 
         <h4>Solution</h4>
@@ -122,6 +135,7 @@
 
         <h4>Explain</h4>
         <p>The main command is <code>awk</code> which will scan each line and get the second column which is filename. Then, <code>$(git status -sb | awk 'NR==2 {print $2}')</code> acts like a sub-command to <code>cp</code> which all the files will be copied to <code>~/backup_folder</code> </p>
+
       </section>
     </div>
 
