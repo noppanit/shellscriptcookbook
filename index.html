@@ -114,6 +114,18 @@
           Then the result is passed to <code>xargs</code> which will act like a pipe to pass the result to command <code>rm</code>
         </p>
 
+        <h4>Problem 3</h4>
+        <p>You want to just find all the files that are 1 day old or time specific.
+        </p>
+
+        <h4>Solution</h4>
+        <code>find /tmp -maxdepth 1 -mtime +1
+        </code>
+
+        <h4>Explain</h4>
+        <p>It's simple to just use <code>-mtime</code> and <code>+1</code> is more than 1 day old. 
+        </p>
+
         <h3>3. <strong>awk</strong> command</h3>
         <h4>Problem 1</h4>
         <p>
